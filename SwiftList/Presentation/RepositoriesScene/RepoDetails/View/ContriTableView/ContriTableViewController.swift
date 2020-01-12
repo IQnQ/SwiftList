@@ -23,24 +23,6 @@ final class ContriTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 50
-        bind(to: viewModel)
-    }
-    
-    private func bind(to viewModel: RepoDetailsViewModel) {
-        viewModel.loadingType.observe(on: self) { [weak self] in self?.update(isLoadingNextPage: $0 == .nextPage) }
-    }
-    
-    func update(isLoadingNextPage: Bool) {
-        if isLoadingNextPage {
-            nextPageLoadingSpinner?.removeFromSuperview()
-            nextPageLoadingSpinner = UIActivityIndicatorView(style: .large)
-            nextPageLoadingSpinner?.startAnimating()
-            nextPageLoadingSpinner?.isHidden = false
-            nextPageLoadingSpinner?.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.frame.width, height: 44)
-            tableView.tableFooterView = nextPageLoadingSpinner
-        } else {
-            tableView.tableFooterView = nil
-        }
     }
 }
 

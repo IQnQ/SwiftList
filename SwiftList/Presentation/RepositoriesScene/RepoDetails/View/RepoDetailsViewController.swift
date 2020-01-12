@@ -8,12 +8,15 @@
 
 import UIKit
 
-final class RepoDetailsViewController: UIViewController, StoryboardInstantiable {
+final class RepoDetailsViewController: UIViewController, StoryboardInstantiable, Alertable {
     
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBOutlet weak var emptyDataLabel: UILabel!
+    @IBOutlet weak var contriListContainer: UIView!
     
     
     
@@ -32,6 +35,7 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackButton()
+        emptyDataLabel.text = NSLocalizedString("Fetching contributors results", comment: "")
         bind(to: viewModel)
         view.accessibilityIdentifier = AccessibilityIdentifier.repoDetailsView
         
@@ -44,6 +48,8 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable 
         viewModel.stars.observe(on: self) { [weak self] in self?.starsLabel.text = "☆ \n\($0)" }
         viewModel.forks.observe(on: self) { [weak self] in self?.forksLabel.text = NSLocalizedString("Forks \n\($0)", comment: "") }
         viewModel.items.observe(on: self) { [weak self] in self?.contriTableViewController?.items = $0 }
+        viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
+        viewModel.loadingType.observe(on: self) { [weak self] _ in self?.updateViewsVisibility() }
         
         
     }
@@ -54,6 +60,34 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable 
             contriTableViewController = destinationVC
             contriTableViewController?.viewModel = viewModel
         }
+    }
+    
+    private func updateViewsVisibility() {
+        
+//        emptyDataLabel.isHidden = true
+        contriListContainer.isHidden = true
+        switch viewModel.loadingType.value {
+        case .none: updateContriListVisibility()
+        case .fullScreen: loadingView.isHidden = false
+        emptyDataLabel.isHidden = false
+        
+        }
+    }
+    
+    private func updateContriListVisibility() {
+       
+        guard !viewModel.isEmpty else {
+            emptyDataLabel.isHidden = false
+            return
+        }
+        emptyDataLabel.isHidden = true
+        loadingView.isHidden = true
+        contriListContainer.isHidden = false
+    }
+    
+    func showError(_ error: String) {
+        guard !error.isEmpty else { return }
+        showAlert(title: NSLocalizedString("Error", comment: ""), message: error)
     }
     
     private func setupBackButton() {

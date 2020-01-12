@@ -11,7 +11,6 @@ import Foundation
 enum ContriListViewModelLoading {
     case none
     case fullScreen
-    case nextPage
 }
 
 protocol RepoDetailsViewModel{

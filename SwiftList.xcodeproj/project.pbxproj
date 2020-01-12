@@ -259,8 +259,8 @@
 			isa = PBXGroup;
 			children = (
 				7ADCE81F23C738FE00955DA4 /* DepInjectionContainer */,
-				7ADCE80823C735B900955DA4 /* AppDelegate.swift */,
 				7ADCE81D23C736B900955DA4 /* AppAppearance.swift */,
+				7ADCE80823C735B900955DA4 /* AppDelegate.swift */,
 				7ADCE82D23C7410400955DA4 /* AppConfig.swift */,
 			);
 			path = Application;
