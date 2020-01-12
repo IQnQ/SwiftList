@@ -4,7 +4,7 @@ The projects follows most of the architectural design decisions detailed in the 
 
 
 
-<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_4C8675841725-1.jpeg" width="300"><img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_91120113DBD8-1.jpeg" width="300">
+<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_4C8675841725-1.jpeg" width="300">
 <img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_D30E60F26022-1.jpeg" width="300">
 <img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_F1F38DB591C8-1.jpeg" width="300">
 
