@@ -17,7 +17,7 @@ final class DefaultSearchReposUseCase: SearchReposUseCase {
     
     private let repoQueriesRepository: RepoQueriesRepository
     
-    init(reposRepository: ReposRepository, repoQueriesRepository: RepoQueriesRepository) {
+    init(repoQueriesRepository: RepoQueriesRepository) {
         self.repoQueriesRepository = repoQueriesRepository
     }
     

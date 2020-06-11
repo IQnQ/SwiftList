@@ -30,8 +30,7 @@ final class ReposSceneDIContainer {
         return DefaultAllReposUseCase(reposRepository: makeRepoRepository())
     }
     func makeSearchReposUseCase() -> SearchReposUseCase {
-        return DefaultSearchReposUseCase(reposRepository: makeRepoRepository(),
-                                         repoQueriesRepository: makeRepoQueriesRepository())
+        return DefaultSearchReposUseCase(repoQueriesRepository: makeRepoQueriesRepository())
     }
     
     func makeFetchContributorsUseCase() -> FetchContributorsUseCase {
