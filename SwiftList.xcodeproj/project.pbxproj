@@ -258,12 +258,12 @@
 		7ADCE80723C735B900955DA4 /* SwiftList */ = {
 			isa = PBXGroup;
 			children = (
-				7A5600D323C79DA200A94A65 /* Presentation */,
-				7ADCE84123C7866800955DA4 /* Common */,
-				7ADCE83823C77FD700955DA4 /* Domain */,
-				7ADCE83023C770FF00955DA4 /* Data */,
 				7ADCE81C23C7369600955DA4 /* Application */,
+				7ADCE83823C77FD700955DA4 /* Domain */,
+				7A5600D323C79DA200A94A65 /* Presentation */,
+				7ADCE83023C770FF00955DA4 /* Data */,
 				7ADCE82F23C770DE00955DA4 /* Infrastructure */,
+				7ADCE84123C7866800955DA4 /* Common */,
 				7ADCE80E23C735BE00955DA4 /* Assets.xcassets */,
 				7ADCE81623C735BE00955DA4 /* Info.plist */,
 			);
@@ -274,8 +274,8 @@
 			isa = PBXGroup;
 			children = (
 				7ADCE81F23C738FE00955DA4 /* DepInjectionContainer */,
-				7ADCE81D23C736B900955DA4 /* AppAppearance.swift */,
 				7ADCE80823C735B900955DA4 /* AppDelegate.swift */,
+				7ADCE81D23C736B900955DA4 /* AppAppearance.swift */,
 				7ADCE82D23C7410400955DA4 /* AppConfig.swift */,
 			);
 			path = Application;
