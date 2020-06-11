@@ -95,11 +95,25 @@ final class DefaultRepoListViewModel: RepoListViewModel {
         items.value.removeAll()
     }
     
-    private func load(repositoryQuery: RepositoryQuery, loadingType: RepoListViewModelLoading) {
+    private func load(loadingType: RepoListViewModelLoading) {
         self.loadingType.value = loadingType
-        self.query.value = repositoryQuery.query
         let reposRequest = AllReposUseCaseRequestValue(page: nextPage)
         reposLoadTask = allReposUseCase.execute(requestValue: reposRequest) { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let reposPage):
+                strongSelf.appendPage(reposPage: reposPage)
+            case .failure(let error):
+                strongSelf.handle(error: error)
+            }
+            strongSelf.loadingType.value = .none
+        }
+    }
+    
+    private func loadSearch(repoQuery: RepositoryQuery, loadingType: RepoListViewModelLoading) {
+        self.loadingType.value = loadingType
+        let reposRequest = SearchReposUseCaseRequestValue(query: repoQuery)
+        reposLoadTask = searchReposUseCase.execute(requestValue: reposRequest) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let reposPage):
@@ -119,7 +133,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     
     private func update(repositoryQuery: RepositoryQuery) {
         resetPages()
-        load(repositoryQuery: repositoryQuery, loadingType: .fullScreen)
+        loadSearch(repoQuery: repositoryQuery, loadingType: .fullScreen)
     }
     
 }
@@ -131,14 +145,12 @@ extension DefaultRepoListViewModel {
     
     func loadFirstPage() {
         guard hasMorePages, loadingType.value == .none else { return }
-        load(repositoryQuery: RepositoryQuery(query: query.value),
-        loadingType: .none)
+        load(loadingType: .none)
     }
     
     func didLoadNextPage() {
         guard hasMorePages, loadingType.value == .none else { return }
-        load(repositoryQuery: RepositoryQuery(query: query.value),
-             loadingType: .nextPage)
+        load(loadingType: .nextPage)
     }
     
     func didSearch(query: String) {

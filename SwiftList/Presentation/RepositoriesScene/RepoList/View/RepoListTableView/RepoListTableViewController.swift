@@ -25,8 +25,8 @@ final class RepoListTableViewController: UITableViewController {
     }
     
     private func bind(to viewModel:RepoListViewModel) {
-           viewModel.loadingType.observe(on: self) { [weak self] in self?.update(isLoadingNextPage: $0 == .nextPage) }
-       }
+        viewModel.loadingType.observe(on: self) { [weak self] in self?.update(isLoadingNextPage: $0 == .nextPage) }
+    }
     
     func update(isLoadingNextPage: Bool) {
         if isLoadingNextPage {
