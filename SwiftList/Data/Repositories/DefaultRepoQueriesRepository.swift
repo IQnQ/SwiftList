@@ -29,4 +29,10 @@ extension DefaultRepoQueriesRepository: RepoQueriesRepository {
     func saveRecentQuery(query: RepositoryQuery, completion: @escaping (Result<RepositoryQuery, Error>) -> Void) {
         repoQueriesPersistentStorage.saveRecentQuery(query: query, completion: completion)
     }
+    
+    func searchQuery(query: RepositoryQuery, completion: @escaping (Result<RepositoriesPage, Error>) -> Void) -> Cancellable? {
+        let endpoint = APIEndpoints.search(query: query.query)
+        let networkTask = self.dataTransferService.request(with: endpoint, completion: completion)
+        return RepositoryTask(networkTask: networkTask)
+    }
 }

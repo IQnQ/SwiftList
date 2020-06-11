@@ -10,7 +10,7 @@ import Foundation
 
 struct APIEndpoints {
     
-    static func repos(query: String, page: Int) -> Endpoint<RepositoriesPage> {
+    static func repos(page: Int) -> Endpoint<RepositoriesPage> {
         
         return Endpoint(path: "search/repositories", parameters: ["q":"language:swift", "page": page, "per_page":"25"])
     }
@@ -18,6 +18,11 @@ struct APIEndpoints {
     static func contributors(owner: String, repoName: String) -> Endpoint<ContributorsPage> {
         
         return Endpoint(path: "repos/\(owner)/\(repoName)/contributors")
+    }
+    
+    static func search(query: String) -> Endpoint<RepositoriesPage> {
+        
+        return Endpoint(path: "search/repositories", parameters: ["q":"\(query)+language:swift"])
     }
     
     static func contributorAvatar(path: String) -> Endpoint<Data> {

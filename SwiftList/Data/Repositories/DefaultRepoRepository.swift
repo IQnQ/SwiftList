@@ -19,8 +19,8 @@ final class DefaultRepoRepository {
 
 extension DefaultRepoRepository: ReposRepository {
     
-    public func reposList(query: RepositoryQuery, page: Int, completion: @escaping (Result<RepositoriesPage, Error>) -> Void) -> Cancellable? {
-        let endpoint = APIEndpoints.repos(query: query.query, page: page)
+    public func reposList(page: Int, completion: @escaping (Result<RepositoriesPage, Error>) -> Void) -> Cancellable? {
+        let endpoint = APIEndpoints.repos(page: page)
         let networkTask = self.dataTransferService.request(with: endpoint, completion: completion)
         return RepositoryTask(networkTask: networkTask)
     }

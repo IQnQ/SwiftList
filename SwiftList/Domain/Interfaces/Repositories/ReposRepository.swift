@@ -10,5 +10,5 @@ import Foundation
 
 protocol ReposRepository {
     @discardableResult
-    func reposList(query: RepositoryQuery, page: Int, completion: @escaping (Result<RepositoriesPage, Error>) -> Void) -> Cancellable?
+    func reposList(page: Int, completion: @escaping (Result<RepositoriesPage, Error>) -> Void) -> Cancellable?
 }

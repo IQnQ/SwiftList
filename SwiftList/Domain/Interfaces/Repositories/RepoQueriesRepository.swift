@@ -9,6 +9,9 @@
 import Foundation
 
 protocol RepoQueriesRepository {
+    
     func recentsQueries(number: Int, completion: @escaping (Result<[RepositoryQuery], Error>) -> Void)
     func saveRecentQuery(query: RepositoryQuery, completion: @escaping (Result<RepositoryQuery, Error>) -> Void)
+    @discardableResult
+    func searchQuery(query: RepositoryQuery, completion: @escaping (Result<RepositoriesPage, Error>) -> Void) -> Cancellable?
 }
