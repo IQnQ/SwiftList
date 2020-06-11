@@ -8,8 +8,8 @@ The projects follows most of the architectural design decisions detailed in the 
 
 
 ## Layers
-* **Domain Layer** = Entities + Use Cases + Repositories Interfaces (Some of the class names are horrendous due to the application's main theme : ReposRepository.swift ...)
-* **Data Repositories Layer** = Repositories Implementations + API (Network) + Persistence DB - (Not used at the time - after search functionality maybe )
+* **Domain Layer** = Entities + Use Cases + Repositories Interfaces 
+* **Data Repositories Layer** = Repositories Implementations + API (Network) 
 * **Presentation Layer (MVVM)** = ViewModels + Views
 
 ## Architecture concepts used here
