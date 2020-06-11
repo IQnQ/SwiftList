@@ -57,24 +57,13 @@ final class ReposSceneDIContainer {
     }
     
     //MARK: - Repository Details
-    func makeRepoDetailsViewController(name: String,
-                                       fullName: String, owner: Owner, size: Int, stars: Int, forks: Int) -> UIViewController {
-        return RepoDetailsViewController.create(with: makeRepoDetailsViewModel(name: name,
-                                                                               fullName: fullName, owner: owner, size: size, stars: stars, forks: forks))
+    func makeRepoDetailsViewController(repo: Repository) -> UIViewController {
+        return RepoDetailsViewController.create(with: makeRepoDetailsViewModel(repo: repo))
     }
     
-    func makeRepoDetailsViewModel(name: String,
-                                  fullName: String, owner: Owner, size: Int, stars: Int, forks: Int) -> RepoDetailsViewModel {
-        return DefaultRepoDetailsViewModel(fetchContributorsUseCase: makeFetchContributorsUseCase(), name: name,
-                                           fullName: fullName, owner: owner, size: size, stars: stars, forks: forks)
+    func makeRepoDetailsViewModel(repo: Repository) -> RepoDetailsViewModel {
+        return DefaultRepoDetailsViewModel(repo: repo, fetchContributorsUseCase: makeFetchContributorsUseCase())
     }
-    
-    //MARK: - Contributor List
-    func makeContriListViewController(name: String,
-                                      fullName: String, owner: Owner, size: Int, stars: Int, forks: Int) -> UIViewController {
-           return RepoDetailsViewController.create(with: makeRepoDetailsViewModel(name: name,
-                                                                                  fullName: fullName, owner: owner, size: size, stars: stars, forks: forks))
-       }
     
 }
 

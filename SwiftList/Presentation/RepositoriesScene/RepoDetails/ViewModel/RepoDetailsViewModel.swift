@@ -44,15 +44,14 @@ final class DefaultRepoDetailsViewModel: RepoDetailsViewModel {
     
     
     @discardableResult
-    init(fetchContributorsUseCase: FetchContributorsUseCase, name: String,
-         fullName: String, owner: Owner, size: Int, stars: Int, forks: Int) {
+    init(repo: Repository, fetchContributorsUseCase: FetchContributorsUseCase) {
         self.fetchContributorsUseCase = fetchContributorsUseCase
-        self.name.value = name
-        self.fullName.value = fullName
-        self.size.value = size
-        self.stars.value = stars
-        self.forks.value = forks
-        load(owner: owner.login, repoName: name, loadingType: .fullScreen)
+        self.name.value = repo.name
+        self.fullName.value = repo.fullName
+        self.size.value = repo.size
+        self.stars.value = repo.stars
+        self.forks.value = repo.forks
+        load(owner: repo.owner.login, repoName: repo.name, loadingType: .fullScreen)
     }
     
     private func appendContributors(_ contributorsPage: ContributorsPage) {

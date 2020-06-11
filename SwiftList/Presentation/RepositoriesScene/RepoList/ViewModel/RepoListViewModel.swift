@@ -10,7 +10,7 @@ import Foundation
 
 enum RepoListViewModelRoute {
     case initial
-    case showRepoDetail(name: String, fullName: String, owner: Owner, size: Int, stars: Int, forks: Int)
+    case showRepoDetail(repo: Repository)
 }
 
 enum RepoListViewModelLoading {
@@ -134,7 +134,6 @@ extension DefaultRepoListViewModel {
     }
     
     func didSelect(item: RepoListItemViewModel) {
-        route.value = .showRepoDetail(name: item.name,
-                                      fullName: item.fullName, owner: item.owner, size: item.size, stars: item.stars, forks: item.forks)
+        route.value = .showRepoDetail(repo: item.repo)
     }
 }

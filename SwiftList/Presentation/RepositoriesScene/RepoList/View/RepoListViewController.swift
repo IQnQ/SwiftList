@@ -88,14 +88,13 @@ extension RepoListViewController {
     func handle(_ route: RepoListViewModelRoute) {
        switch route {
        case .initial: break
-       case .showRepoDetail(let name, let fullName, let owner, let size, let stars, let forks):
-        let vc = repoListViewControllersFactory.makeRepoDetailsViewController(name: name, fullName: fullName, owner: owner, size: size, stars: stars, forks: forks)
+       case .showRepoDetail(let repo):
+        let vc = repoListViewControllersFactory.makeRepoDetailsViewController(repo: repo)
            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
 
 protocol RepoListViewControllersFactory {
-    func makeRepoDetailsViewController(name: String,
-                                       fullName: String, owner: Owner, size: Int, stars: Int, forks: Int) -> UIViewController
+    func makeRepoDetailsViewController(repo: Repository) -> UIViewController
 }

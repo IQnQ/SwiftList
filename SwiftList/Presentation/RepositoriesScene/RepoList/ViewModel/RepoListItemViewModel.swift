@@ -10,12 +10,7 @@ import Foundation
 
 
 protocol RepoListItemViewModel {
-    var name: String { get }
-    var fullName: String { get }
-    var owner: Owner { get }
-    var size: Int { get }
-    var stars: Int { get }
-    var forks: Int { get }
+    var repo: Repository { get }
 }
 
 
@@ -24,21 +19,11 @@ final class DefaultRepoListItemViewModel: RepoListItemViewModel {
     private(set) var id: RepoId
 
     // MARK: - OUTPUT
-    let name: String
-    let fullName: String
-    let owner: Owner
-    let size: Int
-    let stars: Int
-    let forks: Int
+    let repo: Repository
 
     init(repo: Repository) {
+        self.repo = repo
         self.id = repo.id
-        self.name = repo.name
-        self.fullName = repo.fullName
-        self.owner = repo.owner
-        self.size = repo.size
-        self.stars = repo.stars
-        self.forks = repo.forks
     }
 }
 
