@@ -36,7 +36,7 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emptyDataLabel.text = NSLocalizedString("Repository search results", comment: "")
+        emptyDataLabel.text = NSLocalizedString("Search results", comment: "")
         setupSearchController()
         
         bind(to: viewModel)
@@ -46,7 +46,8 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
     func bind(to viewModel: RepoListViewModel) {
         viewModel.route.observe(on: self) { [weak self] in self?.handle($0) }
         viewModel.items.observe(on: self) { [weak self] in
-            self?.reposTableViewController?.items = $0 }
+            self?.reposTableViewController?.items = $0
+        }
         viewModel.repoCount.observe(on: self){ [weak self] in
             self?.title = NSLocalizedString("Swift repositories: \($0)", comment: "") }
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
@@ -63,14 +64,20 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
     }
     
     private func updateViewsVisibility() {
-        
+        loadingView.isHidden = true
         emptyDataLabel.isHidden = true
         repoListContainer.isHidden = true
+        suggestionsListContainer.isHidden = true
+        
         switch viewModel.loadingType.value {
         case .none: updateRepoListVisibility()
         case .fullScreen: loadingView.isHidden = false
+        if let items = self.reposTableViewController?.items, items.isEmpty {
+            emptyDataLabel.text = NSLocalizedString("No results", comment: "")
+            }
         case .nextPage: repoListContainer.isHidden = false
         }
+        updateQueriesSuggestionsVisibility()
     }
     
     private func updateRepoListVisibility() {
@@ -79,7 +86,6 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
             emptyDataLabel.isHidden = false
             return
         }
-        loadingView.isHidden = true
         repoListContainer.isHidden = false
     }
     
@@ -148,16 +154,12 @@ extension RepoListViewController {
 extension RepoListViewController {
     func handle(_ route: RepoListViewModelRoute) {
         switch route {
-        case .initial:
-            print("initial")
-            break
+        case .initial:break
         case .showRepoDetail(let repo):
-            print("showRepoDetail")
             let vc = repoListViewControllersFactory.makeRepoDetailsViewController(repo: repo)
             navigationController?.pushViewController(vc, animated: true)
             
         case .showRepoQueriesSuggestions(let delegate):
-            print("showRepoQueriesSuggestions")
             guard let view = view else { return }
             let vc = repoQueriesSuggestionsView ?? repoListViewControllersFactory.makeRepoQueriesSuggestionsListViewController(delegate: delegate)
             add(child: vc, container: suggestionsListContainer)
@@ -165,19 +167,15 @@ extension RepoListViewController {
             repoQueriesSuggestionsView = vc
             suggestionsListContainer.isHidden = false
         case .closeRepoQueriesSuggestions:
-            print("closeRepoQueriesSuggestions")
             guard let suggestionsListContainer = suggestionsListContainer else { return }
             repoQueriesSuggestionsView?.remove()
             repoQueriesSuggestionsView = nil
             suggestionsListContainer.isHidden = true
-            
         }
-        
     }
 }
 
 protocol RepoListViewControllersFactory {
     func makeRepoQueriesSuggestionsListViewController(delegate: RepoQueryListViewModelDelegate) -> UIViewController
     func makeRepoDetailsViewController(repo: Repository) -> UIViewController
-    
 }

@@ -19,8 +19,10 @@ The projects follows most of the architectural design decisions detailed in the 
 * Unit Tests 
 * UI Tests
 * CI Tests
-* model/use case Tests
+* Model/Use case Tests
 * <s>Proper image loading in the contributor table</s>
+* <s>Search repositories by name and save keywords in local DB</s>
+* Reset initial state button
 
 ## Requirements
 * Xcode Version 11.2.1+  Swift 5.0+

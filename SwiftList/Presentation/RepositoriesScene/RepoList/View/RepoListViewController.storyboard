@@ -22,7 +22,7 @@
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IF-HW-pw6">
-                                <rect key="frame" x="186" y="574.5" width="42" height="21"/>
+                                <rect key="frame" x="186" y="442.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,11 +46,11 @@
                             <constraint firstItem="Tpk-Bc-QyT" firstAttribute="trailing" secondItem="1EY-ZI-jCx" secondAttribute="trailing" id="0R3-uY-Wne"/>
                             <constraint firstItem="1EY-ZI-jCx" firstAttribute="top" secondItem="2mv-Qk-71X" secondAttribute="bottom" id="75s-Gq-50P"/>
                             <constraint firstItem="5n5-hm-tqT" firstAttribute="centerX" secondItem="7cl-7s-Jpt" secondAttribute="centerX" id="9wJ-KY-rlO"/>
-                            <constraint firstItem="8IF-HW-pw6" firstAttribute="top" secondItem="5n5-hm-tqT" secondAttribute="bottom" constant="43.5" id="Ctz-aN-3zJ"/>
                             <constraint firstItem="7cl-7s-Jpt" firstAttribute="centerY" secondItem="5n5-hm-tqT" secondAttribute="centerY" id="M3k-WD-ZbC"/>
-                            <constraint firstItem="5n5-hm-tqT" firstAttribute="centerX" secondItem="8IF-HW-pw6" secondAttribute="centerX" id="SHe-ka-3jS"/>
+                            <constraint firstItem="8IF-HW-pw6" firstAttribute="centerX" secondItem="Tpk-Bc-QyT" secondAttribute="centerX" id="SFs-A0-5mX"/>
                             <constraint firstItem="7cl-7s-Jpt" firstAttribute="leading" secondItem="Tpk-Bc-QyT" secondAttribute="leading" id="SYG-HH-GEr"/>
                             <constraint firstItem="7cl-7s-Jpt" firstAttribute="top" secondItem="2mv-Qk-71X" secondAttribute="bottom" id="V3i-No-OHn"/>
+                            <constraint firstItem="8IF-HW-pw6" firstAttribute="centerY" secondItem="Tpk-Bc-QyT" secondAttribute="centerY" id="Y79-GQ-37U"/>
                             <constraint firstItem="5n5-hm-tqT" firstAttribute="top" secondItem="7cl-7s-Jpt" secondAttribute="bottom" constant="-431" id="hxz-fH-Doh"/>
                             <constraint firstItem="2mv-Qk-71X" firstAttribute="leading" secondItem="Tpk-Bc-QyT" secondAttribute="leading" id="kgm-ve-1LH"/>
                             <constraint firstItem="Tpk-Bc-QyT" firstAttribute="trailing" secondItem="2mv-Qk-71X" secondAttribute="trailing" id="liU-l2-drw"/>
@@ -59,7 +59,6 @@
                             <constraint firstItem="1EY-ZI-jCx" firstAttribute="leading" secondItem="Tpk-Bc-QyT" secondAttribute="leading" id="pT5-Z9-qKH"/>
                             <constraint firstItem="5n5-hm-tqT" firstAttribute="centerX" secondItem="yqW-Ss-A0Q" secondAttribute="centerX" id="qtM-KZ-IIQ"/>
                             <constraint firstItem="7cl-7s-Jpt" firstAttribute="bottom" secondItem="Tpk-Bc-QyT" secondAttribute="bottom" constant="7" id="rDP-Kr-vh0"/>
-                            <constraint firstItem="7cl-7s-Jpt" firstAttribute="centerX" secondItem="8IF-HW-pw6" secondAttribute="centerX" id="w1f-Rv-lNq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tpk-Bc-QyT"/>
                     </view>
