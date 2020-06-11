@@ -15,6 +15,7 @@
 		7A0DD0A92492994400BBD649 /* RepoQueriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DD0A82492994400BBD649 /* RepoQueriesTableViewController.swift */; };
 		7A0DD0AB2492995C00BBD649 /* RepoQueriesTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A0DD0AA2492995C00BBD649 /* RepoQueriesTableViewController.storyboard */; };
 		7A0DD0AD24929A2C00BBD649 /* RepoQueriesItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DD0AC24929A2C00BBD649 /* RepoQueriesItemCell.swift */; };
+		7A0DD0B02492BCC500BBD649 /* AllReposUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DD0AF2492BCC500BBD649 /* AllReposUseCase.swift */; };
 		7A5600CF23C7961C00A94A65 /* RepoQueriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5600CE23C7961C00A94A65 /* RepoQueriesRepository.swift */; };
 		7A5600D223C7976C00A94A65 /* SearchReposUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5600D123C7976C00A94A65 /* SearchReposUseCase.swift */; };
 		7A5600D523C79DE300A94A65 /* RepoListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5600D423C79DE300A94A65 /* RepoListItemViewModel.swift */; };
@@ -78,6 +79,7 @@
 		7A0DD0A82492994400BBD649 /* RepoQueriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoQueriesTableViewController.swift; sourceTree = "<group>"; };
 		7A0DD0AA2492995C00BBD649 /* RepoQueriesTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RepoQueriesTableViewController.storyboard; sourceTree = "<group>"; };
 		7A0DD0AC24929A2C00BBD649 /* RepoQueriesItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoQueriesItemCell.swift; sourceTree = "<group>"; };
+		7A0DD0AF2492BCC500BBD649 /* AllReposUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReposUseCase.swift; sourceTree = "<group>"; };
 		7A5600CE23C7961C00A94A65 /* RepoQueriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoQueriesRepository.swift; sourceTree = "<group>"; };
 		7A5600D123C7976C00A94A65 /* SearchReposUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReposUseCase.swift; sourceTree = "<group>"; };
 		7A5600D423C79DE300A94A65 /* RepoListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListItemViewModel.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		7A5600D023C7967000A94A65 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				7A0DD0AF2492BCC500BBD649 /* AllReposUseCase.swift */,
 				7A5600D123C7976C00A94A65 /* SearchReposUseCase.swift */,
 				7AE7C0DB23CB4C3B00F24120 /* FetchContributorsUseCase.swift */,
 				7A0DD0A52492957400BBD649 /* FetchRecentRepoQueriesUseCase.swift */,
@@ -600,6 +603,7 @@
 				7A5600DC23C7B8F900A94A65 /* Observable.swift in Sources */,
 				7AE7C0E023CB69A200F24120 /* Owner.swift in Sources */,
 				7AE7C0DE23CB623300F24120 /* ContriListItemViewModel.swift in Sources */,
+				7A0DD0B02492BCC500BBD649 /* AllReposUseCase.swift in Sources */,
 				7ADCE82E23C7410400955DA4 /* AppConfig.swift in Sources */,
 				7A5600D523C79DE300A94A65 /* RepoListItemViewModel.swift in Sources */,
 				7ADCE84F23C791D500955DA4 /* CoreDataStorage.swift in Sources */,

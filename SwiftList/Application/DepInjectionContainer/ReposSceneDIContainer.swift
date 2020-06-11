@@ -26,6 +26,9 @@ final class ReposSceneDIContainer {
     }
     
     // MARK: - Use Cases
+    func makeAllReposUseCase() -> AllReposUseCase {
+        return DefaultAllReposUseCase(reposRepository: makeRepoRepository())
+    }
     func makeSearchReposUseCase() -> SearchReposUseCase {
         return DefaultSearchReposUseCase(reposRepository: makeRepoRepository(),
                                          repoQueriesRepository: makeRepoQueriesRepository())
@@ -64,7 +67,7 @@ final class ReposSceneDIContainer {
     }
     
     func makeRepoListViewModel() -> RepoListViewModel {
-        return DefaultRepoListViewModel(searchReposUseCase: makeSearchReposUseCase())
+        return DefaultRepoListViewModel(searchReposUseCase: makeSearchReposUseCase(), allReposUseCase: makeAllReposUseCase())
     }
     
     //MARK: - Repository Details

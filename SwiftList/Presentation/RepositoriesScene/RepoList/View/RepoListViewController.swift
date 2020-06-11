@@ -46,8 +46,7 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
     func bind(to viewModel: RepoListViewModel) {
         viewModel.route.observe(on: self) { [weak self] in self?.handle($0) }
         viewModel.items.observe(on: self) { [weak self] in
-            self?.reposTableViewController?.items = $0
-        }
+            self?.reposTableViewController?.items = $0 }
         viewModel.repoCount.observe(on: self){ [weak self] in
             self?.title = NSLocalizedString("Swift repositories: \($0)", comment: "") }
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }

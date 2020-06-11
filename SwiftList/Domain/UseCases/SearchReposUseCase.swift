@@ -15,11 +15,9 @@ protocol SearchReposUseCase {
 
 final class DefaultSearchReposUseCase: SearchReposUseCase {
     
-    private let reposRepository: ReposRepository
     private let repoQueriesRepository: RepoQueriesRepository
     
     init(reposRepository: ReposRepository, repoQueriesRepository: RepoQueriesRepository) {
-        self.reposRepository = reposRepository
         self.repoQueriesRepository = repoQueriesRepository
     }
     
@@ -42,5 +40,4 @@ final class DefaultSearchReposUseCase: SearchReposUseCase {
 
 struct SearchReposUseCaseRequestValue {
     let query: RepositoryQuery
-    let page: Int
 }

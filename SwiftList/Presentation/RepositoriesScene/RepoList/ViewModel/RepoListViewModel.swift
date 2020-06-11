@@ -58,6 +58,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     }
     
     private let searchReposUseCase: SearchReposUseCase
+    private let allReposUseCase: AllReposUseCase
     
     private var reposLoadTask: Cancellable? { willSet { reposLoadTask?.cancel() } }
     
@@ -71,8 +72,9 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     var isEmpty: Bool { return items.value.isEmpty }
     
     @discardableResult
-    init(searchReposUseCase: SearchReposUseCase) {
+    init(searchReposUseCase: SearchReposUseCase, allReposUseCase: AllReposUseCase) {
         self.searchReposUseCase = searchReposUseCase
+        self.allReposUseCase = allReposUseCase
         loadFirstPage()
       
     }
@@ -96,8 +98,8 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     private func load(repositoryQuery: RepositoryQuery, loadingType: RepoListViewModelLoading) {
         self.loadingType.value = loadingType
         self.query.value = repositoryQuery.query
-        let reposRequest = SearchReposUseCaseRequestValue(query: repositoryQuery, page: nextPage)
-        reposLoadTask = searchReposUseCase.execute(requestValue: reposRequest) { [weak self] result in
+        let reposRequest = AllReposUseCaseRequestValue(page: nextPage)
+        reposLoadTask = allReposUseCase.execute(requestValue: reposRequest) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let reposPage):
