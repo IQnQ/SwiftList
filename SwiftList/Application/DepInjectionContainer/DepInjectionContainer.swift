@@ -14,7 +14,7 @@ final class DepInjectionIContainer {
     
     // MARK: - Network
     lazy var apiDataTransferService: DataTransferService = {
-        let config = ApiDataNetworkConfig(baseURL: URL(string: appConfigurations.apiBaseURL)!)
+        let config = ApiDataNetworkConfig(baseURL: URL(string: appConfigurations.apiBaseURL)!, headers: appConfigurations.apiHeader)
 
         let apiDataNetwork = DefaultNetworkService(config: config)
         return DefaultDataTransferService(with: apiDataNetwork)

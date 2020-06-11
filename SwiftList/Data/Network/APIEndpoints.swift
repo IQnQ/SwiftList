@@ -15,7 +15,7 @@ struct APIEndpoints {
         return Endpoint(path: "search/repositories", parameters: ["q":"language:swift", "page": page, "per_page":"25"])
     }
     
-    static func cotributors(owner: String, repoName: String) -> Endpoint<ContributorsPage> {
+    static func contributors(owner: String, repoName: String) -> Endpoint<ContributorsPage> {
         
         return Endpoint(path: "repos/\(owner)/\(repoName)/contributors")
     }

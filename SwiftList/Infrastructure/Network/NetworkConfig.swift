@@ -20,7 +20,7 @@ public struct ApiDataNetworkConfig: NetworkConfig {
     public let parameters: [String: String]
     
     public init(baseURL: URL,
-                headers: [String: String] = ["Accept":"application/vnd.github.v3+json"],
+                headers: [String: String] = [:],
                 parameters: [String: String] = [:]) {
         self.baseURL = baseURL
         self.headers = headers
