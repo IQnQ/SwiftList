@@ -11,6 +11,8 @@ import Foundation
 enum RepoListViewModelRoute {
     case initial
     case showRepoDetail(repo: Repository)
+    case showRepoQueriesSuggestions(delegate: RepoQueryListViewModelDelegate)
+    case closeRepoQueriesSuggestions
 }
 
 enum RepoListViewModelLoading {
@@ -22,6 +24,10 @@ enum RepoListViewModelLoading {
 protocol RepoListViewModelInput {
     func viewDidLoad()
     func didLoadNextPage()
+    func didSearch(query: String)
+    func didCancelSearch()
+    func showQueriesSuggestions()
+    func closeQueriesSuggestions()
     func didSelect(item: RepoListItemViewModel)
 }
 
@@ -133,7 +139,31 @@ extension DefaultRepoListViewModel {
              loadingType: .nextPage)
     }
     
+    func didSearch(query: String) {
+        guard !query.isEmpty else { return }
+        update(repositoryQuery: RepositoryQuery(query: query))
+    }
+    
+    func didCancelSearch() {
+        reposLoadTask?.cancel()
+    }
+    
+    func showQueriesSuggestions() {
+        route.value = .showRepoQueriesSuggestions(delegate: self)
+    }
+    
+    func closeQueriesSuggestions() {
+        route.value = .closeRepoQueriesSuggestions
+    }
+    
     func didSelect(item: RepoListItemViewModel) {
         route.value = .showRepoDetail(repo: item.repo)
+    }
+}
+
+// MARK: - Delegate method from another model views
+extension DefaultRepoListViewModel: RepoQueryListViewModelDelegate {
+    func repoQueriesListDidSelect(repoQuery: RepositoryQuery) {
+        update(repositoryQuery: repoQuery)
     }
 }

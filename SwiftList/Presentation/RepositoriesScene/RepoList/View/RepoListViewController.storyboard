@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Oc-tM-hlf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Oc-tM-hlf">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,31 +15,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cl-7s-Jpt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="825"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cl-7s-Jpt">
+                                <rect key="frame" x="0.0" y="121" width="414" height="748"/>
                                 <connections>
                                     <segue destination="XQF-1E-gRP" kind="embed" identifier="RepoListTableViewController" id="2vp-FE-uxK"/>
                                 </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IF-HW-pw6">
-                                <rect key="frame" x="186" y="518.5" width="42" height="21"/>
+                                <rect key="frame" x="186" y="574.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5n5-hm-tqT">
-                                <rect key="frame" x="188.5" y="438" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="438" width="37" height="93"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2mv-Qk-71X">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="VEU-DB-EaC"/>
+                                </constraints>
+                            </view>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1EY-ZI-jCx">
+                                <rect key="frame" x="0.0" y="121" width="414" height="748"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5n5-hm-tqT" firstAttribute="centerX" secondItem="7cl-7s-Jpt" secondAttribute="centerX" id="9wJ-KY-rlO"/>
                             <constraint firstItem="8IF-HW-pw6" firstAttribute="top" secondItem="5n5-hm-tqT" secondAttribute="bottom" constant="43.5" id="Ctz-aN-3zJ"/>
-                            <constraint firstItem="7cl-7s-Jpt" firstAttribute="top" secondItem="Tpk-Bc-QyT" secondAttribute="top" id="EPp-2s-e7q"/>
                             <constraint firstItem="7cl-7s-Jpt" firstAttribute="centerY" secondItem="5n5-hm-tqT" secondAttribute="centerY" id="M3k-WD-ZbC"/>
                             <constraint firstItem="5n5-hm-tqT" firstAttribute="centerX" secondItem="8IF-HW-pw6" secondAttribute="centerX" id="SHe-ka-3jS"/>
                             <constraint firstItem="7cl-7s-Jpt" firstAttribute="leading" secondItem="Tpk-Bc-QyT" secondAttribute="leading" id="SYG-HH-GEr"/>
+                            <constraint firstItem="7cl-7s-Jpt" firstAttribute="top" secondItem="2mv-Qk-71X" secondAttribute="bottom" id="V3i-No-OHn"/>
                             <constraint firstItem="5n5-hm-tqT" firstAttribute="top" secondItem="7cl-7s-Jpt" secondAttribute="bottom" constant="-431" id="hxz-fH-Doh"/>
+                            <constraint firstItem="2mv-Qk-71X" firstAttribute="leading" secondItem="Tpk-Bc-QyT" secondAttribute="leading" id="kgm-ve-1LH"/>
+                            <constraint firstItem="Tpk-Bc-QyT" firstAttribute="trailing" secondItem="2mv-Qk-71X" secondAttribute="trailing" id="liU-l2-drw"/>
+                            <constraint firstItem="2mv-Qk-71X" firstAttribute="top" secondItem="Tpk-Bc-QyT" secondAttribute="top" id="pPh-d5-EVd"/>
                             <constraint firstItem="5n5-hm-tqT" firstAttribute="centerX" secondItem="yqW-Ss-A0Q" secondAttribute="centerX" id="qtM-KZ-IIQ"/>
                             <constraint firstItem="7cl-7s-Jpt" firstAttribute="bottom" secondItem="Tpk-Bc-QyT" secondAttribute="bottom" constant="7" id="rDP-Kr-vh0"/>
                             <constraint firstItem="7cl-7s-Jpt" firstAttribute="centerX" secondItem="8IF-HW-pw6" secondAttribute="centerX" id="w1f-Rv-lNq"/>
@@ -51,6 +65,8 @@
                         <outlet property="emptyDataLabel" destination="8IF-HW-pw6" id="AiL-jo-7WY"/>
                         <outlet property="loadingView" destination="5n5-hm-tqT" id="kPO-ca-hie"/>
                         <outlet property="repoListContainer" destination="7cl-7s-Jpt" id="l0g-wh-VXA"/>
+                        <outlet property="searchBarContainer" destination="2mv-Qk-71X" id="VZd-a5-dsu"/>
+                        <outlet property="suggestionsListContainer" destination="1EY-ZI-jCx" id="CNO-eM-RJO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUm-C1-DhF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -62,7 +78,7 @@
             <objects>
                 <tableViewController id="XQF-1E-gRP" customClass="RepoListTableViewController" customModule="SwiftList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="A4x-Rw-bxk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="825"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>

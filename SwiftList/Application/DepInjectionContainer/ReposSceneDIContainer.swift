@@ -35,6 +35,10 @@ final class ReposSceneDIContainer {
         return DefaultContributorsUseCase(contriRepository: makeContriRepository())
     }
     
+    func makeFetchRecentRepoQueriesUseCase() -> FetchRecentRepoQueriesUseCase {
+        return DefaultFetchRecentRepoQueriesUseCase(repoQueriesRepository: makeRepoQueriesRepository())
+    }
+    
     // MARK: - Repositories
     func makeRepoRepository() -> ReposRepository {
         return DefaultRepoRepository(dataTransferService: dependencies.apiDataTransferService)
@@ -70,6 +74,17 @@ final class ReposSceneDIContainer {
     
     func makeRepoDetailsViewModel(repo: Repository) -> RepoDetailsViewModel {
         return DefaultRepoDetailsViewModel(repo: repo, fetchContributorsUseCase: makeFetchContributorsUseCase(), avatarImagesRepository: makeAvatarImagesRepository())
+    }
+    
+    // MARK: - Repository Queries Suggestions List
+    func makeRepoQueriesSuggestionsListViewController(delegate: RepoQueryListViewModelDelegate) -> UIViewController {
+        return RepoQueriesTableViewController.create(with: makeRepoQueryListViewModel(delegate: delegate))
+    }
+    
+    func makeRepoQueryListViewModel(delegate: RepoQueryListViewModelDelegate) -> RepoQueryListViewModel {
+        return DefaultRepoQueryListViewModel(numberOfQueriesToShow: 10,
+                                               fetchRecentRepoQueriesUseCase: makeFetchRecentRepoQueriesUseCase(),
+                                               delegate: delegate)
     }
     
 }

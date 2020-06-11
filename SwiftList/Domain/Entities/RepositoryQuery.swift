@@ -12,8 +12,4 @@ struct RepositoryQuery {
     let query: String
 }
 
-extension RepositoryQuery: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(query)
-    }
-}
+extension RepositoryQuery: Equatable {}
