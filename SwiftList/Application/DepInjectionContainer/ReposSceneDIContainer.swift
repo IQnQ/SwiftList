@@ -12,6 +12,8 @@ final class ReposSceneDIContainer {
     
     struct Dependencies {
         let apiDataTransferService: DataTransferService
+        let imageDataTransferService: DataTransferService
+        
     }
     
     private let dependencies: Dependencies
@@ -47,6 +49,11 @@ final class ReposSceneDIContainer {
         return DefaultContriRepository(dataTransferService: dependencies.apiDataTransferService)
     }
     
+    func makeAvatarImagesRepository() -> AvatarImagesRepository {
+        return DefaultAvatarImagesRepository(dataTransferService: dependencies.imageDataTransferService,
+                                             imageNotFoundData: UIImage(named: "image_not_found")?.pngData())
+    }
+    
     // MARK: - Repository List
     func makeRepoListViewController() -> UIViewController {
         return RepoListViewController.create(with: makeRepoListViewModel(), repoListViewControllersFactory: self)
@@ -62,7 +69,7 @@ final class ReposSceneDIContainer {
     }
     
     func makeRepoDetailsViewModel(repo: Repository) -> RepoDetailsViewModel {
-        return DefaultRepoDetailsViewModel(repo: repo, fetchContributorsUseCase: makeFetchContributorsUseCase())
+        return DefaultRepoDetailsViewModel(repo: repo, fetchContributorsUseCase: makeFetchContributorsUseCase(), avatarImagesRepository: makeAvatarImagesRepository())
     }
     
 }

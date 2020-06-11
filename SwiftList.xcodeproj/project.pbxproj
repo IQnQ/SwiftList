@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0DD09B2492754B00BBD649 /* AvatarImagesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DD09A2492754B00BBD649 /* AvatarImagesRepository.swift */; };
+		7A0DD09D2492780800BBD649 /* DefaultAvatarImagesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DD09C2492780800BBD649 /* DefaultAvatarImagesRepository.swift */; };
 		7A5600CF23C7961C00A94A65 /* RepoQueriesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5600CE23C7961C00A94A65 /* RepoQueriesRepository.swift */; };
 		7A5600D223C7976C00A94A65 /* SearchReposUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5600D123C7976C00A94A65 /* SearchReposUseCase.swift */; };
 		7A5600D523C79DE300A94A65 /* RepoListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5600D423C79DE300A94A65 /* RepoListItemViewModel.swift */; };
@@ -63,6 +65,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A0DD09A2492754B00BBD649 /* AvatarImagesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImagesRepository.swift; sourceTree = "<group>"; };
+		7A0DD09C2492780800BBD649 /* DefaultAvatarImagesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAvatarImagesRepository.swift; sourceTree = "<group>"; };
 		7A5600CE23C7961C00A94A65 /* RepoQueriesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoQueriesRepository.swift; sourceTree = "<group>"; };
 		7A5600D123C7976C00A94A65 /* SearchReposUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReposUseCase.swift; sourceTree = "<group>"; };
 		7A5600D423C79DE300A94A65 /* RepoListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListItemViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +135,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A0DD0992492751F00BBD649 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				7AE7C0D523CB46F000F24120 /* ContriRepository.swift */,
+				7A5600CE23C7961C00A94A65 /* RepoQueriesRepository.swift */,
+				7ADCE83F23C7860600955DA4 /* ReposRepository.swift */,
+				7A0DD09A2492754B00BBD649 /* AvatarImagesRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		7A5600D023C7967000A94A65 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,8 +323,9 @@
 			isa = PBXGroup;
 			children = (
 				7ADCE84423C787C000955DA4 /* Utils */,
-				7ADCE83223C77E7D00955DA4 /* DefaultRepoRepository.swift */,
+				7A0DD09C2492780800BBD649 /* DefaultAvatarImagesRepository.swift */,
 				7AE7C0D323CB459E00F24120 /* DefaultContriRepository.swift */,
+				7ADCE83223C77E7D00955DA4 /* DefaultRepoRepository.swift */,
 				7A5600E823C7C9E200A94A65 /* DefaultRepoQueriesRepository.swift */,
 			);
 			path = Repositories;
@@ -348,9 +364,7 @@
 		7ADCE83E23C785E900955DA4 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				7ADCE83F23C7860600955DA4 /* ReposRepository.swift */,
-				7AE7C0D523CB46F000F24120 /* ContriRepository.swift */,
-				7A5600CE23C7961C00A94A65 /* RepoQueriesRepository.swift */,
+				7A0DD0992492751F00BBD649 /* Repositories */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -535,6 +549,7 @@
 				7ADCE84F23C791D500955DA4 /* CoreDataStorage.swift in Sources */,
 				7A5600CF23C7961C00A94A65 /* RepoQueriesRepository.swift in Sources */,
 				7A5600E923C7C9E200A94A65 /* DefaultRepoQueriesRepository.swift in Sources */,
+				7A0DD09D2492780800BBD649 /* DefaultAvatarImagesRepository.swift in Sources */,
 				7ADCE83323C77E7D00955DA4 /* DefaultRepoRepository.swift in Sources */,
 				7AB6837423C8D3FB005E62AC /* RepoListTableViewController.swift in Sources */,
 				7A5600E323C7C1B400A94A65 /* StoryboardInstantiable.swift in Sources */,
@@ -563,6 +578,7 @@
 				7ADCE85523C7929A00955DA4 /* CoreDataStorage.xcdatamodeld in Sources */,
 				7AB6836923C85E83005E62AC /* RepoListViewController.swift in Sources */,
 				7AE7C0CE23CA71CF00F24120 /* AccessibilityIdentifier.swift in Sources */,
+				7A0DD09B2492754B00BBD649 /* AvatarImagesRepository.swift in Sources */,
 				7ADCE82323C73A2400955DA4 /* ReposSceneDIContainer.swift in Sources */,
 				7A5600D923C7B66D00A94A65 /* RepoListViewModel.swift in Sources */,
 				7ADCE84923C788A300955DA4 /* Repository+Decodable.swift in Sources */,
@@ -707,6 +723,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 697EW27G9U;
 				ENABLE_PREVIEWS = YES;
+				IMAGE_BASE_URL = "https://avatars1.githubusercontent.com/";
 				INFOPLIST_FILE = SwiftList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -729,6 +746,7 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 697EW27G9U;
 				ENABLE_PREVIEWS = YES;
+				IMAGE_BASE_URL = "https://avatars1.githubusercontent.com/";
 				INFOPLIST_FILE = SwiftList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

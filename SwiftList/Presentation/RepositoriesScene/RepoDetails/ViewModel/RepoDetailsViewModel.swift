@@ -28,6 +28,7 @@ protocol RepoDetailsViewModel{
 final class DefaultRepoDetailsViewModel: RepoDetailsViewModel {
     
     private let fetchContributorsUseCase: FetchContributorsUseCase
+    private let avatarImagesRepository: AvatarImagesRepository
     
     private var contriLoadTask: Cancellable? { willSet { contriLoadTask?.cancel() } }
     
@@ -44,19 +45,21 @@ final class DefaultRepoDetailsViewModel: RepoDetailsViewModel {
     
     
     @discardableResult
-    init(repo: Repository, fetchContributorsUseCase: FetchContributorsUseCase) {
+    init(repo: Repository, fetchContributorsUseCase: FetchContributorsUseCase, avatarImagesRepository: AvatarImagesRepository) {
         self.fetchContributorsUseCase = fetchContributorsUseCase
         self.name.value = repo.name
         self.fullName.value = repo.fullName
         self.size.value = repo.size
         self.stars.value = repo.stars
         self.forks.value = repo.forks
+        self.avatarImagesRepository = avatarImagesRepository
         load(owner: repo.owner.login, repoName: repo.name, loadingType: .fullScreen)
+       
     }
     
     private func appendContributors(_ contributorsPage: ContributorsPage) {
         self.items.value = contributorsPage.contributors.map {
-            DefaultContriListItemViewModel(contributor: $0)
+            DefaultContriListItemViewModel(contributor: $0, avatarImagesRepository: avatarImagesRepository)
         }
     }
     

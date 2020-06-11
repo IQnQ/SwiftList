@@ -19,4 +19,12 @@ struct APIEndpoints {
         
         return Endpoint(path: "repos/\(owner)/\(repoName)/contributors")
     }
+    
+    static func contributorAvatar(path: String) -> Endpoint<Data> {
+        
+        let index = path.lastIndex(of: "/")
+        let lastPart: String = .init(path.suffix(from: index!))
+        
+        return Endpoint(path: "u\(lastPart)", responseDecoder: RawDataResponseDecoder())
+    }
 }

@@ -15,12 +15,22 @@ final class ContriListItemCell: UITableViewCell {
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    private var viewModel:ContriListItemViewModel!
+    private var viewModel:ContriListItemViewModel! { didSet { unbind(from: oldValue) } }
     
     func fill(with viewModel: ContriListItemViewModel) {
         self.viewModel = viewModel
         loginLabel.text = viewModel.login
-        avatarImageView.load(url: URL(string: viewModel.avatar)!)
+        viewModel.updateAvatarImage(width: Int(avatarImageView.frame.size.width * UIScreen.main.scale))
+        
+        bind(to: viewModel)
+    }
+    
+    private func bind(to viewModel: ContriListItemViewModel) {
+        viewModel.avatarImage.observe(on: self) { [weak self] in self?.avatarImageView.image = $0.flatMap { UIImage(data: $0) } }
+    }
+    
+    private func unbind(from item: ContriListItemViewModel?) {
+        item?.avatarImage.remove(observer: self)
     }
 }
 

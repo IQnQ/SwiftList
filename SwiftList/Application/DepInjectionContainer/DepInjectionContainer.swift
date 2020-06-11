@@ -19,9 +19,14 @@ final class DepInjectionIContainer {
         let apiDataNetwork = DefaultNetworkService(config: config)
         return DefaultDataTransferService(with: apiDataNetwork)
     }()
+    lazy var imageDataTransferService: DataTransferService = {
+        let config = ApiDataNetworkConfig(baseURL: URL(string: appConfigurations.imagesBaseURL)!)
+        let imagesDataNetwork = DefaultNetworkService(config: config)
+        return DefaultDataTransferService(with: imagesDataNetwork)
+    }()
     // DIContainers of scenes
     func makeReposSceneDIContainer() -> ReposSceneDIContainer {
-        let dependencies = ReposSceneDIContainer.Dependencies(apiDataTransferService: apiDataTransferService)
+        let dependencies = ReposSceneDIContainer.Dependencies(apiDataTransferService: apiDataTransferService, imageDataTransferService: imageDataTransferService)
         return ReposSceneDIContainer(dependencies: dependencies)
     }
 }

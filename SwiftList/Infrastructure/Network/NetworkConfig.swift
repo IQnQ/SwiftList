@@ -26,4 +26,5 @@ public struct ApiDataNetworkConfig: NetworkConfig {
         self.headers = headers
         self.parameters = parameters
     }
+    
 }

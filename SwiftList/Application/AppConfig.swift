@@ -16,11 +16,16 @@ final class AppConfig {
         }
         return apiBaseURL
     }()
-    
     lazy var apiHeader: [String: String] = {
         guard let apiHeader = Bundle.main.object(forInfoDictionaryKey: "ApiHeader") as? String else {
             fatalError("ApiHeder must not be empty in plist")
         }
         return ["Accept": apiHeader]
+    }()
+    lazy var imagesBaseURL: String = {
+        guard let imageBaseURL = Bundle.main.object(forInfoDictionaryKey: "ImageBaseURL") as? String else {
+            fatalError("ApiBaseURL must not be empty in plist")
+        }
+        return imageBaseURL
     }()
 }
