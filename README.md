@@ -20,7 +20,7 @@ The projects follows most of the architectural design decisions detailed in the 
 * UI Tests
 * CI Tests
 * model/use case Tests
-* Proper image loading in the contributor table
+* <s>Proper image loading in the contributor table</s>
 
 ## Requirements
 * Xcode Version 11.2.1+  Swift 5.0+
