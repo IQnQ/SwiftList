@@ -52,6 +52,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     var hasMorePages: Bool {
         return currentPage < totalPageCount
     }
+    
     var nextPage: Int {
         guard hasMorePages else { return currentPage }
         return currentPage + 1
@@ -122,6 +123,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
                 strongSelf.handle(error: error)
             }
             strongSelf.loadingType.value = .none
+            strongSelf.currentPage = Int.max
         }
     }
     
