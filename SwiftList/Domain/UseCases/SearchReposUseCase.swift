@@ -23,7 +23,7 @@ final class DefaultSearchReposUseCase: SearchReposUseCase {
     
     func execute(requestValue: SearchReposUseCaseRequestValue,
                  completion: @escaping (Result<RepositoriesPage, Error>) -> Void) -> Cancellable? {
-        return repoQueriesRepository.searchQuery(query: requestValue.query) { [weak self] result in
+        return repoQueriesRepository.searchQuery(query: requestValue.query, page: requestValue.page) { [weak self] result in
             
             guard let strongSelf = self else { return }
             
@@ -40,4 +40,5 @@ final class DefaultSearchReposUseCase: SearchReposUseCase {
 
 struct SearchReposUseCaseRequestValue {
     let query: RepositoryQuery
+    let page: Int
 }

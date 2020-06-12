@@ -19,8 +19,10 @@ protocol RepoQueryListItemViewModel: RepoQueryListItemViewModelInput, RepoQueryL
 
 final class DefaultRepoQueryListItemViewModel: RepoQueryListItemViewModel, Equatable {
     let query: String
+    
     init(query: String) {
         self.query = query
+
     }
 }
 

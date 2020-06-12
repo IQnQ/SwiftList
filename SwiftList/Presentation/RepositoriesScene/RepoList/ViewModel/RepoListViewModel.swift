@@ -21,11 +21,17 @@ enum RepoListViewModelLoading {
     case nextPage
 }
 
+enum ListingType {
+    case normal
+    case search
+}
+
 protocol RepoListViewModelInput {
     func viewDidLoad()
     func loadFirstPage()
     func didLoadNextPage()
     func didSearch(query: String)
+    func didSearchLoadNextPage(query: String)
     func didCancelSearch()
     func showQueriesSuggestions()
     func closeQueriesSuggestions()
@@ -40,7 +46,10 @@ protocol RepoListViewModelOutput {
     var error: Observable<String> { get }
     var repoCount: Observable<Int> { get }
     var isEmpty: Bool { get }
+    var listingType: ListingType { get }
 }
+
+
 
 protocol RepoListViewModel: RepoListViewModelInput, RepoListViewModelOutput {}
 
@@ -58,6 +67,8 @@ final class DefaultRepoListViewModel: RepoListViewModel {
         guard hasMorePages else { return currentPage }
         return currentPage + 1
     }
+    
+    var listingType: ListingType = .normal
     
     private let searchReposUseCase: SearchReposUseCase
     private let allReposUseCase: AllReposUseCase
@@ -92,6 +103,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     }
     
     private func resetPages() {
+        listingType = .normal
         currentPage = 0
         totalPageCount = 1
         items.value.removeAll()
@@ -114,17 +126,17 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     
     private func loadSearch(repoQuery: RepositoryQuery, loadingType: RepoListViewModelLoading) {
         self.loadingType.value = loadingType
-        let reposRequest = SearchReposUseCaseRequestValue(query: repoQuery)
+        let reposRequest = SearchReposUseCaseRequestValue(query: repoQuery, page: nextPage)
         reposLoadTask = searchReposUseCase.execute(requestValue: reposRequest) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .success(let reposPage):
                 strongSelf.appendPage(reposPage: reposPage)
+                strongSelf.listingType = .search
             case .failure(let error):
                 strongSelf.handle(error: error)
             }
             strongSelf.loadingType.value = .none
-            strongSelf.currentPage = Int.max
         }
     }
     
@@ -136,6 +148,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     
     private func update(repositoryQuery: RepositoryQuery) {
         resetPages()
+        self.query.value = repositoryQuery.query
         loadSearch(repoQuery: repositoryQuery, loadingType: .fullScreen)
     }
     
@@ -160,6 +173,11 @@ extension DefaultRepoListViewModel {
     func didSearch(query: String) {
         guard !query.isEmpty else { return }
         update(repositoryQuery: RepositoryQuery(query: query))
+    }
+    
+    func didSearchLoadNextPage(query: String) {
+        guard hasMorePages, loadingType.value == .none else { return }
+        loadSearch(repoQuery: RepositoryQuery(query: query), loadingType: .nextPage)
     }
     
     func didCancelSearch() {

@@ -57,7 +57,11 @@ extension RepoListTableViewController {
         cell.fill(with: viewModel.items.value[indexPath.row])
         
         if indexPath.row == viewModel.items.value.count - 1 {
-            viewModel.didLoadNextPage()
+            if viewModel.listingType == .normal{
+                viewModel.didLoadNextPage()
+            } else {
+                viewModel.didSearchLoadNextPage(query: viewModel.query.value)
+            }
         }
         
         cell.accessibilityLabel = String(format: NSLocalizedString("Result row %d", comment: ""), indexPath.row + 1)
