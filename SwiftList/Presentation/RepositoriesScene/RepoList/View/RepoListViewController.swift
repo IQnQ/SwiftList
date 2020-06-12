@@ -72,9 +72,7 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
         switch viewModel.loadingType.value {
         case .none: updateRepoListVisibility()
         case .fullScreen: loadingView.isHidden = false
-        if let items = self.reposTableViewController?.items, items.isEmpty {
-            emptyDataLabel.text = NSLocalizedString("No results", comment: "")
-            }
+        if viewModel.isEmpty { emptyDataLabel.text = NSLocalizedString("No results", comment: "") }
         case .nextPage: repoListContainer.isHidden = false
         }
         updateQueriesSuggestionsVisibility()
