@@ -50,6 +50,10 @@ extension RepoQueriesTableViewController {
         return viewModel.items.value.count
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return NSLocalizedString("Suggestions", comment: "")
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RepoQueriesItemCell.reuseIdentifier, for: indexPath) as? RepoQueriesItemCell else {
             fatalError("Cannot dequeue reusable cell \(RepoQueriesItemCell.self) with reuseIdentifier: \(RepoQueriesItemCell.reuseIdentifier)")

@@ -23,6 +23,7 @@ enum RepoListViewModelLoading {
 
 protocol RepoListViewModelInput {
     func viewDidLoad()
+    func loadFirstPage()
     func didLoadNextPage()
     func didSearch(query: String)
     func didCancelSearch()
@@ -146,6 +147,7 @@ extension DefaultRepoListViewModel {
     func viewDidLoad() {}
     
     func loadFirstPage() {
+        resetPages()
         guard hasMorePages, loadingType.value == .none else { return }
         load(loadingType: .none)
     }

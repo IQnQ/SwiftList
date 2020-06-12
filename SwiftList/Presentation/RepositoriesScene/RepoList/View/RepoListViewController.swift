@@ -38,6 +38,7 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
         
         emptyDataLabel.text = NSLocalizedString("Search results", comment: "")
         setupSearchController()
+        setupResetNavButton()
         
         bind(to: viewModel)
         viewModel.viewDidLoad()
@@ -145,6 +146,14 @@ extension RepoListViewController {
         searchBarContainer.addSubview(searchController.searchBar)
         definesPresentationContext = true
         searchController.searchBar.searchTextField.accessibilityIdentifier = AccessibilityIdentifier.searchField
+    }
+    
+    private func setupResetNavButton() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
+    }
+    
+    @objc private func reset() {
+        viewModel.loadFirstPage()
     }
 }
 

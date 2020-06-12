@@ -4,12 +4,15 @@ The projects follows most of the architectural design decisions detailed in the 
 
 
 
-<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_4C8675841725-1.jpeg" width="300"><img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_D30E60F26022-1.jpeg" width="300"><img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_F1F38DB591C8-1.jpeg" width="300">
+<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_6B2D4DFE2042-1.jpeg" width="250">
+<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_0009.PNG" width="250">
+<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_46E19E0E1848-1.jpeg" width="250">
+<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_E8AEF49F509C-1.jpeg" width="250">
 
 
 ## Layers
 * **Domain Layer** = Entities + Use Cases + Repositories Interfaces 
-* **Data Repositories Layer** = Repositories Implementations + API (Network) 
+* **Data Repositories Layer** = Repositories Implementations + API (Network) + Persistence DB
 * **Presentation Layer (MVVM)** = ViewModels + Views
 
 ## Architecture concepts used here
@@ -20,9 +23,6 @@ The projects follows most of the architectural design decisions detailed in the 
 * UI Tests
 * CI Tests
 * Model/Use case Tests
-* <s>Proper image loading in the contributor table</s>
-* <s>Search repositories by name and save keywords in local DB</s>
-* Reset initial state button
 
 ## Requirements
 * Xcode Version 11.2.1+  Swift 5.0+
