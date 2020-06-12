@@ -48,8 +48,7 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
         viewModel.route.observe(on: self) { [weak self] in self?.handle($0) }
         viewModel.items.observe(on: self) { [weak self] in
             self?.reposTableViewController?.items = $0 }
-        viewModel.repoCount.observe(on: self){ [weak self] in
-            self?.title = NSLocalizedString("Swift repositories: \($0)", comment: "") }
+        viewModel.repoCount.observe(on: self){ [weak self] in self?.setupTitle($0) }
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
         viewModel.loadingType.observe(on: self) { [weak self] _ in self?.updateViewsVisibility() }
         
@@ -60,6 +59,14 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
             let destinationVC = segue.destination as? RepoListTableViewController {
             reposTableViewController = destinationVC
             reposTableViewController?.viewModel = viewModel
+        }
+    }
+    
+    private func setupTitle(_ count: Int) {
+        if viewModel.listingType == .normal {
+             self.title = NSLocalizedString("Swift repositories: \(count)", comment: "")
+        } else {
+            self.title = NSLocalizedString(" \"\(viewModel.query.value)\" results: \(count)", comment: "")
         }
     }
     
