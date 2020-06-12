@@ -68,7 +68,7 @@
 		7AE7C0E223CB6A5300F24120 /* Owner+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7C0E123CB6A5300F24120 /* Owner+Decodable.swift */; };
 		7AE7C0E523CB72D700F24120 /* ContriTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7C0E423CB72D700F24120 /* ContriTableViewController.swift */; };
 		7AE7C0E823CB74B900F24120 /* ContriListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE7C0E723CB74B900F24120 /* ContriListItemCell.swift */; };
-		7AEAF5A024937F8B00C8E968 /* ResetAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAF59F24937F8B00C8E968 /* ResetAction.swift */; };
+		7AEAF5A2249380DF00C8E968 /* UIBarButtonItemAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEAF5A1249380DF00C8E968 /* UIBarButtonItemAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,7 +135,7 @@
 		7AE7C0E123CB6A5300F24120 /* Owner+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Owner+Decodable.swift"; sourceTree = "<group>"; };
 		7AE7C0E423CB72D700F24120 /* ContriTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContriTableViewController.swift; sourceTree = "<group>"; };
 		7AE7C0E723CB74B900F24120 /* ContriListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContriListItemCell.swift; sourceTree = "<group>"; };
-		7AEAF59F24937F8B00C8E968 /* ResetAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAction.swift; sourceTree = "<group>"; };
+		7AEAF5A1249380DF00C8E968 /* UIBarButtonItemAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,7 +250,7 @@
 				7A5600DB23C7B8F900A94A65 /* Observable.swift */,
 				7A5600E623C7C21C00A94A65 /* UIViewController+AddChild.swift */,
 				7AE7C0CD23CA71CF00F24120 /* AccessibilityIdentifier.swift */,
-				7AEAF59F24937F8B00C8E968 /* ResetAction.swift */,
+				7AEAF5A1249380DF00C8E968 /* UIBarButtonItemAction.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -642,7 +642,7 @@
 				7AE7C0D823CB47DD00F24120 /* ContributorTask.swift in Sources */,
 				7ADCE85523C7929A00955DA4 /* CoreDataStorage.xcdatamodeld in Sources */,
 				7AB6836923C85E83005E62AC /* RepoListViewController.swift in Sources */,
-				7AEAF5A024937F8B00C8E968 /* ResetAction.swift in Sources */,
+				7AEAF5A2249380DF00C8E968 /* UIBarButtonItemAction.swift in Sources */,
 				7AE7C0CE23CA71CF00F24120 /* AccessibilityIdentifier.swift in Sources */,
 				7A0DD09B2492754B00BBD649 /* AvatarImagesRepository.swift in Sources */,
 				7ADCE82323C73A2400955DA4 /* ReposSceneDIContainer.swift in Sources */,
