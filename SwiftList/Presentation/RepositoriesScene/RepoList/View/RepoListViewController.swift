@@ -149,11 +149,8 @@ extension RepoListViewController {
     }
     
     private func setupResetNavButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(reset))
-    }
-    
-    @objc private func reset() {
-        viewModel.loadFirstPage()
+        let resetAction = ResetAction { self.viewModel.loadFirstPage() }
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(resetAction.action))
     }
 }
 
