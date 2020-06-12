@@ -4,10 +4,7 @@ The projects follows most of the architectural design decisions detailed in the 
 
 
 
-<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_6B2D4DFE2042-1.jpeg" width="250">
-<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_0009.PNG" width="250">
-<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_46E19E0E1848-1.jpeg" width="250">
-<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_E8AEF49F509C-1.jpeg" width="250">
+<img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_6B2D4DFE2042-1.jpeg" width="250"><img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_0009.PNG" width="250"><img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_46E19E0E1848-1.jpeg" width="250"><img src="https://github.com/IQnQ/SwiftList/blob/master/readme_assets/IMG_E8AEF49F509C-1.jpeg" width="250">
 
 
 ## Layers
