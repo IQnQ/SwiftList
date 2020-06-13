@@ -50,7 +50,6 @@ protocol RepoListViewModelOutput {
 }
 
 
-
 protocol RepoListViewModel: RepoListViewModelInput, RepoListViewModelOutput {}
 
 final class DefaultRepoListViewModel: RepoListViewModel {

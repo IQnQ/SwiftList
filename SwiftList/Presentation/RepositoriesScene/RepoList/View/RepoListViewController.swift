@@ -64,9 +64,9 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
     
     private func setupTitle(_ count: Int) {
         if viewModel.listingType == .normal {
-             self.title = NSLocalizedString("Swift repositories: \(count)", comment: "")
+            title = NSLocalizedString("Swift repositories: \(count)", comment: "")
         } else {
-            self.title = NSLocalizedString(" \"\(viewModel.query.value)\" results: \(count)", comment: "")
+            title = NSLocalizedString(" \"\(viewModel.query.value)\" results: \(count)", comment: "")
         }
     }
     
@@ -87,7 +87,6 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
     }
     
     private func updateRepoListVisibility() {
-       
         guard !viewModel.isEmpty else {
             emptyDataLabel.isHidden = false
             return
