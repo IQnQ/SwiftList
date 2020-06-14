@@ -9,10 +9,13 @@
 import Foundation
 
 
-protocol RepoListItemViewModel {
+protocol RepoListItemViewModelInput { }
+
+protocol RepoListItemViewModelOutput {
     var repo: Repository { get }
 }
 
+protocol RepoListItemViewModel: RepoListItemViewModelInput, RepoListItemViewModelOutput { }
 
 final class DefaultRepoListItemViewModel: RepoListItemViewModel {
     

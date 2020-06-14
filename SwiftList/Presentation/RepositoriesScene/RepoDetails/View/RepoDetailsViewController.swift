@@ -35,7 +35,7 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable,
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackButton()
-        emptyDataLabel.text = NSLocalizedString("Fetching contributors results", comment: "")
+        emptyDataLabel.text = NSLocalizedString("Fetching contributors", comment: "")
         bind(to: viewModel)
         view.accessibilityIdentifier = AccessibilityIdentifier.repoDetailsView
         
@@ -63,8 +63,6 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable,
     }
     
     private func updateViewsVisibility() {
-        
-//        emptyDataLabel.isHidden = true
         contriListContainer.isHidden = true
         switch viewModel.loadingType.value {
         case .none: updateContriListVisibility()
@@ -75,7 +73,6 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable,
     }
     
     private func updateContriListVisibility() {
-       
         guard !viewModel.isEmpty else {
             emptyDataLabel.isHidden = false
             return
@@ -92,7 +89,7 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable,
     
     private func setupBackButton() {
         let backButton = UIBarButtonItem()
-        backButton.title = "Back"
+        backButton.title = NSLocalizedString("Back", comment: "")
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     

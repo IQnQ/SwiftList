@@ -87,8 +87,6 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     init(searchReposUseCase: SearchReposUseCase, allReposUseCase: AllReposUseCase) {
         self.searchReposUseCase = searchReposUseCase
         self.allReposUseCase = allReposUseCase
-        loadFirstPage()
-      
     }
     
     private func appendPage(reposPage: RepositoriesPage) {
@@ -156,7 +154,9 @@ final class DefaultRepoListViewModel: RepoListViewModel {
 // MARK: - INPUT. View event methods
 extension DefaultRepoListViewModel {
 
-    func viewDidLoad() {}
+    func viewDidLoad() {
+        loadFirstPage()
+    }
     
     func loadFirstPage() {
         resetPages()

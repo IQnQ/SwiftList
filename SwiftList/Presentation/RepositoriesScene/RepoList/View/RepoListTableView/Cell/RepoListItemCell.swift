@@ -21,8 +21,7 @@ final class RepoListItemCell: UITableViewCell {
     func fill(with viewModel: RepoListItemViewModel) {
         self.viewModel = viewModel
         nameLabel.text = viewModel.repo.name
-        fullNameLabel
-            .text = viewModel.repo.fullName
+        fullNameLabel.text = viewModel.repo.fullName
     }
     
 }
