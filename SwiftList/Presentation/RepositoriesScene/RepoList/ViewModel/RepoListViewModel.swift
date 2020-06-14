@@ -54,23 +54,16 @@ protocol RepoListViewModel: RepoListViewModelInput, RepoListViewModelOutput {}
 
 final class DefaultRepoListViewModel: RepoListViewModel {
     
-    private(set) var currentPage: Int = 0
-    
-    var totalPageCount: Int = 1
-    
-    var hasMorePages: Bool {
-        return currentPage < totalPageCount
-    }
-    
-    var nextPage: Int {
-        guard hasMorePages else { return currentPage }
-        return currentPage + 1
-    }
-    
-    var listingType: ListingType = .normal
-    
     private let searchReposUseCase: SearchReposUseCase
     private let allReposUseCase: AllReposUseCase
+    
+    var currentPage: Int = 0
+    var totalPageCount: Int = 1
+    var hasMorePages: Bool { return currentPage < totalPageCount }
+    
+    var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
+    var listingType: ListingType = .normal
+    
     
     private var reposLoadTask: Cancellable? { willSet { reposLoadTask?.cancel() } }
     

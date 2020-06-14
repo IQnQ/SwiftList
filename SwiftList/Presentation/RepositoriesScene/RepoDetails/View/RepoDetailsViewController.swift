@@ -18,8 +18,6 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable,
     @IBOutlet weak var emptyDataLabel: UILabel!
     @IBOutlet weak var contriListContainer: UIView!
     
-    
-    
     private static let fadeTransitionDuration: CFTimeInterval = 0.4
     
     var viewModel: RepoDetailsViewModel!
@@ -51,8 +49,6 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable,
         viewModel.items.observe(on: self) { [weak self] in self?.contriTableViewController?.items = $0 }
         viewModel.error.observe(on: self) { [weak self] in self?.showError($0) }
         viewModel.loadingType.observe(on: self) { [weak self] _ in self?.updateViewsVisibility() }
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,10 +61,12 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable,
     
     private func updateViewsVisibility() {
         contriListContainer.isHidden = true
+        
         switch viewModel.loadingType.value {
         case .none: updateContriListVisibility()
-        case .fullScreen: loadingView.isHidden = false
-        emptyDataLabel.isHidden = false
+        case .fullScreen:
+            loadingView.isHidden = false
+            emptyDataLabel.isHidden = false
         
         }
     }
