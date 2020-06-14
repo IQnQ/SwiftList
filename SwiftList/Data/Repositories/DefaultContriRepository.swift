@@ -19,8 +19,8 @@ final class DefaultContriRepository {
 
 extension DefaultContriRepository: ContriRepository {
     
-    public func contriList(owner: String, repoName: String, completion: @escaping (Result<ContributorsPage, Error>) -> Void) -> Cancellable? {
-        let endpoint = APIEndpoints.contributors(owner: owner, repoName: repoName)
+    public func contriList(query: ContributorsQuery, completion: @escaping (Result<ContributorsPage, Error>) -> Void) -> Cancellable? {
+        let endpoint = APIEndpoints.contributors(owner: query.owner, repoName: query.repoName)
         let networkTask = self.dataTransferService.request(with: endpoint, completion: completion)
         return ContributorTask(networkTask: networkTask)
     }

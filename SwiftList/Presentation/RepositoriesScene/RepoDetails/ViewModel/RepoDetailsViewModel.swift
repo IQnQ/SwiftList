@@ -13,7 +13,11 @@ enum ContriListViewModelLoading {
     case fullScreen
 }
 
-protocol RepoDetailsViewModel{
+protocol RepoDetailsViewModelInput {
+    func viewDidLoad()
+}
+
+protocol RepoDetailsViewModelOutput {
     var name: Observable<String> { get }
     var fullName: Observable<String> { get }
     var size: Observable<Int> { get }
@@ -24,6 +28,8 @@ protocol RepoDetailsViewModel{
     var error: Observable<String> { get }
     var isEmpty: Bool { get }
 }
+
+protocol RepoDetailsViewModel: RepoDetailsViewModelInput, RepoDetailsViewModelOutput { }
 
 final class DefaultRepoDetailsViewModel: RepoDetailsViewModel {
     
@@ -38,6 +44,7 @@ final class DefaultRepoDetailsViewModel: RepoDetailsViewModel {
     let size: Observable<Int> = Observable(0)
     let stars: Observable<Int> = Observable(0)
     let forks: Observable<Int> = Observable(0)
+    let query: Observable<(String, String)> = Observable(("",""))
     let items: Observable<[ContriListItemViewModel]> = Observable([])
     let loadingType: Observable<ContriListViewModelLoading> = Observable(.none)
     let error: Observable<String> = Observable("")
@@ -53,7 +60,7 @@ final class DefaultRepoDetailsViewModel: RepoDetailsViewModel {
         self.stars.value = repo.stars
         self.forks.value = repo.forks
         self.avatarImagesRepository = avatarImagesRepository
-        load(owner: repo.owner.login, repoName: repo.name, loadingType: .fullScreen)
+        self.query.value = (repo.owner.login, repo.name)
        
     }
     
@@ -63,10 +70,10 @@ final class DefaultRepoDetailsViewModel: RepoDetailsViewModel {
         }
     }
     
-    private func load(owner: String, repoName: String, loadingType: ContriListViewModelLoading) {
+    private func load(_ contriQuery: ContributorsQuery, loadingType: ContriListViewModelLoading) {
         self.loadingType.value = loadingType
         
-        let contriRequest = FetchContributorsUseCaseRequestValue(owner: owner, repoName: repoName)
+        let contriRequest = FetchContributorsUseCaseRequestValue(query: contriQuery)
         contriLoadTask = fetchContributorsUseCase.execute(requestValue: contriRequest) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
@@ -83,6 +90,17 @@ final class DefaultRepoDetailsViewModel: RepoDetailsViewModel {
         self.error.value = error.isInternetConnectionError ?
             NSLocalizedString("No internet connection", comment: "") :
             NSLocalizedString("Failed loading movies", comment: "")
+    }
+}
+
+extension DefaultRepoDetailsViewModel {
+    func viewDidLoad() {
+        loadContributors()
+    }
+    
+    func loadContributors() {
+        guard loadingType.value == .none else { return }
+        load(ContributorsQuery(owner: query.value.0, repoName: query.value.1), loadingType: .fullScreen)
     }
 }
 

@@ -37,6 +37,7 @@ final class RepoDetailsViewController: UIViewController, StoryboardInstantiable,
         setupBackButton()
         emptyDataLabel.text = NSLocalizedString("Fetching contributors", comment: "")
         bind(to: viewModel)
+        viewModel.viewDidLoad()
         view.accessibilityIdentifier = AccessibilityIdentifier.repoDetailsView
         
     }

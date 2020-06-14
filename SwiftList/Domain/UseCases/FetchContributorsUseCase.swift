@@ -23,7 +23,7 @@ final class DefaultContributorsUseCase: FetchContributorsUseCase {
     
     func execute(requestValue: FetchContributorsUseCaseRequestValue,
                  completion: @escaping (Result<ContributorsPage, Error>) -> Void) -> Cancellable? {
-        return contriRepository.contriList(owner: requestValue.owner, repoName: requestValue.repoName) { result in
+        return contriRepository.contriList(query: requestValue.query) { result in
             
             switch result {
             case .success:
@@ -36,7 +36,6 @@ final class DefaultContributorsUseCase: FetchContributorsUseCase {
 }
 
 struct FetchContributorsUseCaseRequestValue {
-    let owner: String
-    let repoName: String
+    let query: ContributorsQuery
 }
 

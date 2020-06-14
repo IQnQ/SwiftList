@@ -10,5 +10,5 @@ import Foundation
 
 protocol ContriRepository {
     @discardableResult
-    func contriList(owner: String, repoName: String, completion: @escaping (Result<ContributorsPage, Error>) -> Void) -> Cancellable?
+    func contriList(query: ContributorsQuery, completion: @escaping (Result<ContributorsPage, Error>) -> Void) -> Cancellable?
 }
