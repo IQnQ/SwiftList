@@ -63,7 +63,7 @@ final class RepoListViewController: UIViewController, StoryboardInstantiable, Al
     }
     
     private func setupTitle(_ count: Int) {
-        if viewModel.listingType == .normal {
+        if viewModel.listingType.value == .normal {
             title = NSLocalizedString("Swift repositories: \(count)", comment: "")
         } else {
             title = NSLocalizedString(" \"\(viewModel.query.value)\" results: \(count)", comment: "")

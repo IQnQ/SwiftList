@@ -57,7 +57,7 @@ extension RepoListTableViewController {
         cell.fill(with: viewModel.items.value[indexPath.row])
         
         if indexPath.row == viewModel.items.value.count - 1 {
-            if viewModel.listingType == .normal{
+            if viewModel.listingType.value == .normal{
                 viewModel.didLoadNextPage()
             } else {
                 viewModel.didSearchLoadNextPage(query: viewModel.query.value)
