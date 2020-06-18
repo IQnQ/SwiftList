@@ -42,11 +42,12 @@ protocol RepoListViewModelOutput {
     var route: Observable<RepoListViewModelRoute> { get }
     var items: Observable<[RepoListItemViewModel]> { get }
     var loadingType: Observable<RepoListViewModelLoading> { get }
+    var listingType: Observable<ListingType> { get }
     var query: Observable<String> { get }
     var error: Observable<String> { get }
     var repoCount: Observable<Int> { get }
     var isEmpty: Bool { get }
-    var listingType: ListingType { get }
+   
 }
 
 
@@ -62,7 +63,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     var hasMorePages: Bool { return currentPage < totalPageCount }
     
     var nextPage: Int { hasMorePages ? currentPage + 1 : currentPage }
-    var listingType: ListingType = .normal
+    
     
     
     private var reposLoadTask: Cancellable? { willSet { reposLoadTask?.cancel() } }
@@ -71,6 +72,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     let route: Observable<RepoListViewModelRoute> = Observable(.initial)
     let items: Observable<[RepoListItemViewModel]> = Observable([])
     let loadingType: Observable<RepoListViewModelLoading> = Observable(.none)
+    var listingType: Observable<ListingType> = Observable(.normal)
     let query: Observable<String> = Observable("")
     let error: Observable<String> = Observable("")
     let repoCount: Observable<Int> = Observable(0)
@@ -93,7 +95,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     }
     
     private func resetPages() {
-        listingType = .normal
+        listingType.value = .normal
         currentPage = 0
         totalPageCount = 1
         items.value.removeAll()
@@ -122,7 +124,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
             switch result {
             case .success(let reposPage):
                 strongSelf.appendPage(reposPage: reposPage)
-                strongSelf.listingType = .search
+                strongSelf.listingType.value = .search
             case .failure(let error):
                 strongSelf.handle(error: error)
             }
@@ -133,7 +135,7 @@ final class DefaultRepoListViewModel: RepoListViewModel {
     private func handle(error: Error) {
         self.error.value = error.isInternetConnectionError ?
             NSLocalizedString("No internet connection", comment: "") :
-            NSLocalizedString("Failed loading the repos", comment: "")
+            NSLocalizedString("Loading failed", comment: "")
     }
     
     private func update(repositoryQuery: RepositoryQuery) {
